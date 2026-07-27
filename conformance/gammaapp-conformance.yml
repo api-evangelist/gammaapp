@@ -1,0 +1,47 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://developers.gamma.app/mcp/mcp-tools-reference ,
+  https://developers.gamma.app/reference/error-codes ,
+  https://trust.gamma.app
+standards:
+- id: oauth2
+  conforms: true
+  evidence: MCP server authenticates with OAuth 2.0 Bearer tokens (auth.gamma.app).
+- id: rfc9728-oauth-protected-resource-metadata
+  conforms: true
+  evidence: mcp.gamma.app/.well-known/oauth-protected-resource returns 200 protected-resource metadata.
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: MCP authorization server supports Dynamic Client Registration.
+- id: model-context-protocol
+  conforms: true
+  evidence: Official hosted MCP server exposing 9 tools (mcp/gammaapp-mcp.yml).
+- id: cursor-pagination
+  conforms: true
+  evidence: List endpoints use hasMore + nextCursor/after cursor pagination.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom { message, statusCode } envelope, not application/problem+json.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No documented Sunset/Deprecation response-header support.
+- id: soc2-type2
+  conforms: true
+  evidence: Listed on Gamma Trust Center (trust.gamma.app).
+- id: iso-27001
+  conforms: true
+  evidence: Listed on Gamma Trust Center (trust.gamma.app).
+- id: gdpr
+  conforms: true
+  evidence: Data Processing Addendum (gamma.app/dpa) + Trust Center.
+- id: hipaa
+  conforms: true
+  evidence: Listed on Gamma Trust Center (trust.gamma.app).
+- id: pci-dss
+  conforms: true
+  evidence: Listed on Gamma Trust Center (trust.gamma.app).
+- id: csa-star
+  conforms: true
+  evidence: Listed on Gamma Trust Center (trust.gamma.app).
+compliance_program: https://trust.gamma.app

@@ -1,0 +1,1 @@
+{"resource":"https://mcp.gamma.app","authorization_servers":["https://auth.gamma.app"],"scopes_supported":["generate","gamma:read"],"bearer_methods_supported":["header","body"]}

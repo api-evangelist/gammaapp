@@ -1,0 +1,62 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.gamma.app/reference/changelog
+scheme: dated
+current_version: v1.0
+scope: Gamma Public API, MCP Server, and integrations
+entries:
+- date: '2026-07-16'
+  tags: [feature]
+  title: Analytics card metadata and complete card lists
+  breaking: false
+  highlights: >-
+    Card analytics rows now include cardName and cardPosition. Cards analytics
+    returns every card (zeroed stats for no activity); per-viewer perCardTimeSpent
+    covers every card.
+- date: '2026-03-06'
+  tags: [launch]
+  title: ChatGPT App live
+  breaking: false
+  highlights: Gamma available as a ChatGPT app; create presentations/documents/social posts from ChatGPT.
+- date: '2026-03-06'
+  tags: [launch]
+  title: All three automation platforms
+  breaking: false
+  highlights: Native Zapier, Make, and n8n integrations with full v1.0 API parity.
+- date: '2026-02-27'
+  tags: [feature]
+  title: Create from template GA, new models, and more
+  breaking: false
+  highlights: >-
+    Create from Template GA. New stylePreset parameter. PNG export. GET
+    /generations/{id} returns gammaId. New image models (recraft-v4 family,
+    gemini-3.1-flash-image family, flux-2-max, flux-2-klein).
+- date: '2026-01-23'
+  tags: [launch]
+  title: Claude connector
+  breaking: false
+  highlights: Create gammas directly from Claude conversations.
+- date: '2026-01-16'
+  tags: [deprecation]
+  title: v0.2 API removed
+  breaking: true
+  highlights: v0.2 endpoints disabled; all integrations must use v1.0.
+- date: '2025-11-05'
+  tags: [feature]
+  title: Generate API GA, create from template, and more
+  breaking: false
+  highlights: >-
+    Generate API GA at v1.0. Create from Template beta. Webpage generation.
+    Headers/footers. Image URLs in input. Folder assignment and email sharing.
+    List Themes and List Folders endpoints. Official Make integration. Removed
+    hard generation limits.
+- date: '2025-09-15'
+  tags: [feature]
+  title: Credits-based pricing, new models, and Zapier
+  breaking: false
+  highlights: Credits-based pricing introduced. Ultra tier unlocks up to 75 cards. Zapier integration.
+- date: '2025-07-28'
+  tags: [launch]
+  title: Beta release of Gamma Generate endpoints
+  breaking: false
+  highlights: First two endpoints for creating and retrieving gammas via API released in beta.

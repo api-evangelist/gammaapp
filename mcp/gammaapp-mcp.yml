@@ -1,0 +1,57 @@
+generated: '2026-07-19'
+method: searched
+status: published
+source: https://developers.gamma.app/mcp/mcp-tools-reference
+server:
+  name: gamma
+  transport: http
+  url: https://mcp.gamma.app/mcp
+  hosted: true
+  plans: all
+  notes: >-
+    Official hosted Gamma MCP server. Powers the Gamma connectors in ChatGPT and
+    Claude. Available on all Gamma plans; generations charge credits.
+authentication:
+  type: oauth2
+  scheme: bearer
+  authorization_server: https://auth.gamma.app
+  protected_resource_metadata: https://mcp.gamma.app/.well-known/oauth-protected-resource
+  dynamic_client_registration: true            # RFC 7591
+  protected_resource_metadata_spec: RFC 9728
+  scopes_supported:
+  - generate
+  - gamma:read
+  consent_permissions:
+  - Create gammas in your workspace
+  - Read gammas in your workspace
+  - List folders from your workspace
+  - List themes from your workspace
+tools:
+- name: generate
+  description: Create presentations, documents, webpages, or social posts from scratch (async).
+  read_only: false
+- name: generate_from_template
+  description: Create a new gamma from an existing template gamma (async).
+  read_only: false
+- name: get_generation_status
+  description: Check the status of a generation.
+  read_only: true
+- name: export_gamma
+  description: Export an existing gamma to PDF, PPTX, or PNG (async).
+  read_only: false
+- name: get_export_status
+  description: Check the status of an export and get the download link.
+  read_only: true
+- name: get_gammas
+  description: Browse or search existing gammas and templates.
+  read_only: true
+- name: read_gamma
+  description: Read the full content of an existing Gamma (read-only).
+  read_only: true
+- name: get_themes
+  description: Browse or search the Gamma theme library.
+  read_only: true
+- name: get_folders
+  description: Browse or search your Gamma folders.
+  read_only: true
+error_format: '{ "error": "...", "isError": true }'

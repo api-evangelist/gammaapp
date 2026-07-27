@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://developers.gamma.app/reference/changelog ,
+  https://developers.gamma.app/get-started/understanding-the-api-options
+versioning:
+  scheme: uri-path
+  current: v1.0
+  base: https://public-api.gamma.app/v1.0
+  notes: Version is carried in the URL path (/v1.0/...).
+deprecation:
+  policy_url: https://developers.gamma.app/reference/changelog
+  history:
+  - version: v0.2
+    status: removed
+    date: '2026-01-16'
+    note: v0.2 endpoints were disabled; all integrations must use v1.0.
+  - version: beta
+    status: superseded
+    date: '2025-11-05'
+    note: Generate API moved from beta to v1.0 (GA).
+status_page: https://status.gamma.app
+trust_center: https://trust.gamma.app
+notes: >-
+  Gamma runs a versioned URI-path API. The prior v0.2 was fully removed on
+  2026-01-16, demonstrating a real deprecation/removal practice, though no
+  formal multi-month sunset-window policy or RFC 8594 Sunset-header support is
+  documented. Status is published at status.gamma.app.

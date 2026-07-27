@@ -1,0 +1,79 @@
+generated: '2026-07-19'
+method: derived
+source: >-
+  Derived from the Gamma API endpoint/object reference at developers.gamma.app
+  (no OpenAPI is published). Entities and relationships inferred from documented
+  request/response fields and path parameters.
+entities:
+- name: Generation
+  id_field: generationId
+  produced_by: [POST /v1.0/generations, POST /v1.0/generations/from-template]
+  fields: [generationId, status, gammaUrl, exportUrl, gammaId, credits.deducted, credits.remaining, error]
+  notes: Async job. status in {pending, completed, failed}. On completion yields a Gamma (gammaId).
+- name: Gamma
+  id_field: gammaId
+  id_prefix: g_
+  fields: [id, title, type, url, thumbnailUrl, themeId, createdTime, updatedTime]
+  notes: The document itself (presentation, document, webpage, or social post). type in {template, regular}.
+- name: Export
+  id_field: exportId
+  produced_by: ['POST /v1.0/gammas/{gammaId}/export']
+  fields: [exportId, status, gammaId, exportAs, exportUrl, error, reason]
+  notes: Async export job to pdf/pptx/png. reason in {render_timeout, deck_too_large, no_content, export_failed}.
+- name: Theme
+  id_field: id
+  fields: [id, name, type, colorKeywords, toneKeywords]
+  notes: type in {standard, custom}. Referenced by generations via themeId.
+- name: Folder
+  id_field: id
+  fields: [id, name]
+  notes: Referenced by generations via folderIds[].
+- name: Comment
+  parent: Gamma
+  produced_by: ['GET /v1.0/gammas/{gammaId}/comments']
+  notes: Cursor-paginated comment threads on a Gamma; supports updatedSince delta filter.
+- name: DocAnalytics
+  parent: Gamma
+  produced_by: ['GET /v1.0/gammas/{gammaId}/analytics']
+  fields: [views, uniqueViewers, uniqueEditors, cardCount, lastOpened, dailyBreakdown]
+- name: CardAnalytics
+  parent: Gamma
+  produced_by: ['GET /v1.0/gammas/{gammaId}/analytics/cards']
+  fields: [cardName, cardPosition, viewTimeSeconds, viewerReachPercent]
+- name: ViewerAnalytics
+  parent: Gamma
+  produced_by: ['GET /v1.0/gammas/{gammaId}/analytics/viewers', 'GET .../viewers/{userId}']
+  fields: [userId, displayName, email, lastOpened, cardsViewed, perCardViewTimePercent]
+relationships:
+- from: Generation
+  to: Gamma
+  type: has_one
+  via: gammaId
+- from: Export
+  to: Gamma
+  type: belongs_to
+  via: gammaId
+- from: Gamma
+  to: Theme
+  type: has_one
+  via: themeId
+- from: Gamma
+  to: Folder
+  type: belongs_to
+  via: folderIds
+- from: Gamma
+  to: Comment
+  type: has_many
+  via: gammaId
+- from: Gamma
+  to: DocAnalytics
+  type: has_one
+  via: gammaId
+- from: Gamma
+  to: CardAnalytics
+  type: has_many
+  via: gammaId
+- from: Gamma
+  to: ViewerAnalytics
+  type: has_many
+  via: gammaId

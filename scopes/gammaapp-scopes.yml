@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: searched
+source: https://mcp.gamma.app/.well-known/oauth-protected-resource
+docs: https://developers.gamma.app/mcp/mcp-tools-reference
+notes: >-
+  OAuth scopes apply to the Gamma MCP server / connector OAuth flow (auth server
+  https://auth.gamma.app), not to the API-key-authenticated REST API. Scope list
+  taken verbatim from the RFC 9728 protected-resource metadata; the human-facing
+  consent permissions are documented in the MCP tools reference.
+schemes:
+- name: OAuth2
+  authorization_server: https://auth.gamma.app
+  source: https://mcp.gamma.app/.well-known/oauth-protected-resource
+scopes:
+- scope: generate
+  description: Create gammas (presentations, documents, webpages, social posts) in the user's workspace.
+  sources: [well-known/gammaapp-oauth-protected-resource.json]
+- scope: 'gamma:read'
+  description: Read gammas, list folders, and list themes from the user's workspace.
+  sources: [well-known/gammaapp-oauth-protected-resource.json]
+consent_permissions:
+- Create gammas in your workspace
+- Read gammas in your workspace
+- List folders from your workspace
+- List themes from your workspace

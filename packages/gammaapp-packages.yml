@@ -1,0 +1,31 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  npm, PyPI and the gamma-app GitHub org. Gamma does not publish a
+  general-purpose first-party REST client SDK; it ships an official n8n
+  automation node and native Zapier/Make integrations, and its programmatic
+  surface is the REST API plus the hosted MCP server (see mcp/).
+packages:
+- language: typescript
+  registry: github
+  name: n8n-nodes-gamma
+  url: https://github.com/gamma-app/n8n-nodes-gamma
+  official: true
+  kind: n8n-community-node
+  notes: >-
+    Official Gamma node for self-hosted and cloud n8n automation workflows. An
+    npm package name (n8n-nodes-gamma) is reserved but currently publishes no
+    installable version; the source of truth is the gamma-app GitHub repo.
+third_party:
+- language: typescript
+  registry: npm
+  name: '@raydeck/gamma-app-mcp'
+  url: https://www.npmjs.com/package/@raydeck/gamma-app-mcp
+  official: false
+  notes: Community MCP wrapper for the Gamma API; not maintained by Gamma.
+no_first_party_sdk: true
+notes: >-
+  No official Python/JavaScript/etc. client library was found on npm, PyPI,
+  Maven Central, NuGet, RubyGems, Packagist or crates.io. The PyPI 'gamma'
+  project is unrelated. SDKs pointer intentionally omitted (no installable
+  first-party dev SDK).

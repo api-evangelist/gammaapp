@@ -1,0 +1,54 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.gamma.app/reference/error-codes
+format: custom-json
+envelope:
+  shape: '{ "message": string, "statusCode": int }'
+  example: '{ "message": "Invalid API key.", "statusCode": 401 }'
+  request_id_header: x-request-id
+notes: >-
+  Gamma returns a simple JSON error envelope (message + statusCode), not RFC 9457
+  application/problem+json. The x-request-id response header should be quoted to
+  support when contacting support about a 500.
+errors:
+- status: 400
+  message: Input validation errors
+  description: Invalid parameters detected. Check error details for specific parameter requirements.
+  remediation: >-
+    Ensure required fields are present (inputText or pages for POST /generations;
+    prompt + gammaId for from-template; exportAs for export), enum values match
+    exactly (e.g. presentation not Presentation), inputText is 1-400000 chars,
+    and numCards is within plan limits.
+- status: 401
+  message: Invalid API key
+  description: The provided API key is invalid or not associated with an eligible account.
+  remediation: Verify the key starts with sk-gamma-, is not revoked, and the header is the case-sensitive X-API-KEY.
+- status: 402
+  message: Insufficient credits remaining
+  description: The workspace does not have enough credits.
+  remediation: Purchase credits at gamma.app/settings/billing or enable auto-recharge. Monitor credits.remaining on poll responses.
+- status: 403
+  message: Forbidden
+  description: Access denied. No permission for the resource, or the feature is not available on your plan.
+- status: 403
+  message: Access denied. You must have edit permission to archive this gamma.
+  description: The gammaId is a web-app URL slug instead of the API file ID, the Gamma is not in the API key's workspace, or the key owner lacks edit permission.
+  remediation: Use the gammaId from the generation poll response (typically starts with g_), not the URL slug.
+- status: 403
+  message: Access denied - workspace admin role required
+  description: DELETE /gammas/{gammaId} requires a workspace admin role on the API key's workspace.
+- status: 404
+  message: 'Generation ID not found. generationId: xxxxxx'
+  description: The specified generation ID could not be located.
+  remediation: Check and correct the generationId used for polling.
+- status: 429
+  message: Too many requests
+  description: Too many requests have been made. Retry after the rate limit period.
+  remediation: Respect the Retry-After header if present and implement exponential backoff.
+- status: 500
+  message: An error occurred while generating the gamma.
+  description: An unexpected error occurred while generating the gamma.
+  remediation: Contact support with the x-request-id header for troubleshooting.
+- status: 502
+  message: Bad gateway
+  description: Temporary gateway issue. Try again.

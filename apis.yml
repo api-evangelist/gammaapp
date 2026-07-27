@@ -1,7 +1,30 @@
 aid: gammaapp
 name: Gamma.app
-description: Gamma.app is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Gamma (Gamma Tech, Inc.) is an AI-powered platform for generating polished
+  presentations, documents, websites, and social media posts from text prompts.
+  Its public REST API (base https://public-api.gamma.app/v1.0) lets developers
+  programmatically create gammas from scratch or from an existing template, poll
+  asynchronous generation jobs, export to PDF/PPTX/PNG, manage themes and
+  folders, retrieve document- and card-level analytics, and archive or delete
+  documents. Gamma also runs an official hosted Model Context Protocol (MCP)
+  server at mcp.gamma.app secured with OAuth 2.0 and Dynamic Client Registration
+  that powers its ChatGPT and Claude connectors, alongside native Zapier, Make,
+  and n8n integrations. API key access requires a Pro, Ultra, Teams, or Business
+  plan and uses credit-based billing.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://github.com/gamma-app.png
 url: https://raw.githubusercontent.com/api-evangelist/gammaapp/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,12 +34,111 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Artificial Intelligence
+- Presentations
+- Documents
+- Content Generation
+- Generative AI
+- Productivity
+- MCP
+- Websites
+- Social Media
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: Gamma Public API
+  description: >-
+    The Gamma Public API generates presentations, documents, websites, and
+    social posts from text. Everything runs asynchronously: create a generation,
+    poll for status, and retrieve the result (gammaUrl, exportUrl, gammaId).
+    Endpoints cover generation from scratch and from templates, export, themes,
+    folders, document/card/viewer analytics, comments, archive, and delete.
+  humanURL: https://developers.gamma.app/
+  baseURL: https://public-api.gamma.app/v1.0
+  properties:
+  - type: Documentation
+    url: https://developers.gamma.app/
+  - type: APIReference
+    url: https://developers.gamma.app/generations/create-generation
+  - type: GettingStarted
+    url: https://developers.gamma.app/get-started/understanding-the-api-options
+  - type: Authentication
+    url: authentication/gammaapp-authentication.yml
+  - type: OAuthScopes
+    url: scopes/gammaapp-scopes.yml
+  - type: MCPServer
+    url: mcp/gammaapp-mcp.yml
+  - type: ErrorCatalog
+    url: errors/gammaapp-error-codes.yml
+  - type: Lifecycle
+    url: lifecycle/gammaapp-lifecycle.yml
+  - type: Conventions
+    url: conventions/gammaapp-conventions.yml
+  - type: DataModel
+    url: data-model/gammaapp-data-model.yml
+common:
+- type: DeveloperPortal
+  url: https://developers.gamma.app/
+- type: Documentation
+  url: https://developers.gamma.app/
+- type: APIReference
+  url: https://developers.gamma.app/generations/create-generation
+- type: GettingStarted
+  url: https://developers.gamma.app/get-started/understanding-the-api-options
+- type: Support
+  url: https://help.gamma.app/
+- type: GitHubOrganization
+  url: https://github.com/gamma-app
+- type: Pricing
+  url: https://gamma.app/pricing
+- type: SignUp
+  url: https://gamma.app/signup
+- type: TermsOfService
+  url: https://gamma.app/terms
+- type: PrivacyPolicy
+  url: https://gamma.app/privacy
+- type: StatusPage
+  url: https://status.gamma.app
+- type: TrustCenter
+  url: https://trust.gamma.app
+- type: Compliance
+  url: https://trust.gamma.app
+- type: ChangeLog
+  url: changelog/gammaapp-changelog.yml
+- type: Authentication
+  url: authentication/gammaapp-authentication.yml
+- type: OAuthScopes
+  url: scopes/gammaapp-scopes.yml
+- type: MCPServer
+  url: mcp/gammaapp-mcp.yml
+- type: LLMsTxt
+  url: llms/gammaapp-llms.txt
+- type: WellKnown
+  url: well-known/gammaapp-well-known.yml
+- type: Packages
+  url: packages/gammaapp-packages.yml
+- type: ErrorCatalog
+  url: errors/gammaapp-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/gammaapp-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/gammaapp-lifecycle.yml
+- type: Conventions
+  url: conventions/gammaapp-conventions.yml
+- type: DataModel
+  url: data-model/gammaapp-data-model.yml
+- type: Conformance
+  url: conformance/gammaapp-conformance.yml
+- type: DomainSecurity
+  url: security/gammaapp-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

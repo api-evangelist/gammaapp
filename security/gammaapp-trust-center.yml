@@ -1,0 +1,22 @@
+generated: '2026-07-19'
+method: searched
+probe: false
+url: https://trust.gamma.app
+source: >-
+  https://trust.gamma.app (SafeBase trust center, JS-rendered) ;
+  corroborated by https://gamma.app/dpa and a third-party security profile.
+certifications:
+- SOC 2 Type II
+- ISO 27001
+- GDPR
+- HIPAA
+- PCI DSS
+- CSA STAR Level 1
+subprocessors: https://trust.gamma.app
+dpa: https://gamma.app/dpa
+notes: >-
+  Gamma Tech, Inc. operates a public trust center at trust.gamma.app. The page
+  is a JavaScript-rendered SafeBase portal (not readable by the security-programs
+  probe or by curl), so certifications were captured via search corroboration
+  rather than a raw HTML scrape. A Data Processing Addendum is published at
+  gamma.app/dpa.

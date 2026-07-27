@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of Gamma hosts
+notes: >-
+  Probed /.well-known/security.txt, /openid-configuration,
+  /oauth-authorization-server, /api-catalog and /ai-plugin.json on
+  developers.gamma.app, public-api.gamma.app and gamma.app (all 404). The Gamma
+  MCP server publishes RFC 9728 OAuth Protected Resource Metadata.
+hosts:
+- host: https://mcp.gamma.app
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: gammaapp-oauth-protected-resource.json
+    spec: RFC 9728 OAuth 2.0 Protected Resource Metadata
+- host: https://developers.gamma.app
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://public-api.gamma.app
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://gamma.app
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /security.txt
+    status: 403

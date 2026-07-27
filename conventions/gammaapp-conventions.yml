@@ -1,0 +1,58 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://developers.gamma.app/get-started/understanding-the-api-options ,
+  https://developers.gamma.app/guides/async-patterns-and-polling ,
+  https://developers.gamma.app/reference/error-codes ,
+  https://developers.gamma.app/mcp/mcp-tools-reference
+authentication:
+  rest: X-API-KEY header (key prefix sk-gamma-)
+  mcp: OAuth 2.0 Bearer token
+  cross_ref: authentication/gammaapp-authentication.yml
+async:
+  pattern: create-then-poll
+  description: >-
+    Generation and export are asynchronous. POST /generations (or
+    /generations/from-template) returns a generationId; poll GET
+    /generations/{generationId} every ~5 seconds until status is completed or
+    failed. Export follows the same pattern with exportId and GET /exports/{id}.
+  statuses: [pending, completed, failed]
+  poll_interval_seconds: 5
+pagination:
+  style: cursor
+  request_params: [limit, after]
+  response_fields: [hasMore, nextCursor]
+  defaults: { limit_default: 25, limit_max: 50 }
+  notes: >-
+    List endpoints (themes, folders, gammas, comments) are cursor-paginated:
+    check hasMore, pass nextCursor as the after query param. Keep query/type
+    filters constant while advancing the cursor. Comments support an
+    updatedSince filter for delta polling.
+request_tracing:
+  header: x-request-id
+  notes: Returned on responses; quote it when contacting support about a 500.
+versioning:
+  scheme: uri-path
+  current: v1.0
+  cross_ref: lifecycle/gammaapp-lifecycle.yml
+error_envelope:
+  shape: '{ "message": string, "statusCode": int }'
+  problem_json: false
+  cross_ref: errors/gammaapp-error-codes.yml
+rate_limiting:
+  signal: HTTP 429 "Too many requests"
+  retry_header: Retry-After
+  guidance: Implement exponential backoff; higher plans get higher limits.
+idempotency:
+  client_idempotency_key: false
+  notes: >-
+    Gamma exposes no client-supplied idempotency-key header. Some operations are
+    idempotent by nature: POST /gammas/{gammaId}/archive succeeds even if already
+    archived, and the read/status MCP tools (get_generation_status,
+    get_export_status, get_gammas, read_gamma, get_themes, get_folders) are
+    marked idempotent. Generation and export are not idempotent - each call
+    starts a new job and consumes credits.
+billing:
+  model: credit-based
+  fields: [credits.deducted, credits.remaining]
+  notes: Credit usage returned on completed/failed generation poll responses.
