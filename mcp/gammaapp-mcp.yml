@@ -8,15 +8,14 @@ server:
   url: https://mcp.gamma.app/mcp
   hosted: true
   plans: all
-  notes: >-
-    Official hosted Gamma MCP server. Powers the Gamma connectors in ChatGPT and
-    Claude. Available on all Gamma plans; generations charge credits.
+  notes: Official hosted Gamma MCP server. Powers the Gamma connectors in ChatGPT and Claude. Available
+    on all Gamma plans; generations charge credits.
 authentication:
   type: oauth2
   scheme: bearer
   authorization_server: https://auth.gamma.app
   protected_resource_metadata: https://mcp.gamma.app/.well-known/oauth-protected-resource
-  dynamic_client_registration: true            # RFC 7591
+  dynamic_client_registration: true
   protected_resource_metadata_spec: RFC 9728
   scopes_supported:
   - generate
@@ -55,3 +54,10 @@ tools:
   description: Browse or search your Gamma folders.
   read_only: true
 error_format: '{ "error": "...", "isError": true }'
+deployment:
+  mode: remote
+  endpoint: https://mcp.gamma.app/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
