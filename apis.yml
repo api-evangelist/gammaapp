@@ -12,6 +12,17 @@ description: >-
   that powers its ChatGPT and Claude connectors, alongside native Zapier, Make,
   and n8n integrations. API key access requires a Pro, Ultra, Teams, or Business
   plan and uses credit-based billing.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
